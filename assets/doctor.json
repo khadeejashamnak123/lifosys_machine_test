@@ -1,0 +1,50 @@
+{
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Brooklyn Simmons",
+      "initials": "BS",
+      "profileImage": null,
+      "specialty": "Cardiology",
+      "totalBookings": "12/80 Bookings",
+      "currentBookings": 12,
+      "maxBookings": 80,
+      "timeSlots": [
+        {
+          "startTime": "08:00AM",
+          "endTime": "09:00AM",
+          "isAvailable": true
+        },
+        {
+          "startTime": "04:00PM",
+          "endTime": "08:00PM",
+          "isAvailable": true
+        }
+      ],
+      "workingHours": "08:00AM - 09:00AM | 04:00PM - 08:00PM",
+      "isActive": true,
+      "bookingButtonColor": "#7C3AED"
+    },
+    {
+      "id": "2",
+      "name": "Cameron Williamson",
+      "profileImage": null,
+      "initials": "CW",
+      "initialsColor": "#F59E0B",
+      "specialty": "Cardiology",
+      "totalBookings": "12/80 Bookings",
+      "currentBookings": 12,
+      "maxBookings": 80,
+      "timeSlots": [
+        {
+          "startTime": "08:00AM",
+          "endTime": "09:00AM",
+          "isAvailable": true
+        }
+      ],
+      "workingHours": "08:00AM - 09:00AM",
+      "isActive": true,
+      "bookingButtonColor": "#7C3AED"
+    }
+  ]
+}

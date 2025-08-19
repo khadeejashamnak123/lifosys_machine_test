@@ -1,0 +1,39 @@
+{
+  "patients": [
+    {
+      "id": "1",
+      "name": "Eleanor Pena",
+      "profileImage": null,
+      "initials": "EP",
+      "patientId": "ID246894",
+      "phoneNumber": "8459624756",
+      "status": "checked-in",
+      "checkInTime": "2025-01-20T10:30:00Z",
+      "appointmentCount": 31,
+      "isBooked": false
+    },
+    {
+      "id": "2",
+      "name": "Ronald Richards",
+      "profileImage": null,
+      "initials": "RR",
+      "initialsColor": "#4CAF50",
+      "patientId": "ID246894",
+      "phoneNumber": "8459624756",
+      "lastVisit": "14/02/2025",
+      "status": "scheduled",
+      "isBooked": false
+    },
+    {
+      "id": "3",
+      "name": "Robert Fox",
+      "profileImage": null,
+      "initials": "RF",
+      "patientId": "ID246894",
+      "phoneNumber": "8459624756",
+      "status": "booked",
+      "bookingStatus": "confirmed",
+      "isBooked": true
+    }
+  ]
+}
