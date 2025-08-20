@@ -1,4 +1,3 @@
-
 class Token {
   final int id;
   final String time;

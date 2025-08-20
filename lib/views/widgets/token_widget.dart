@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:machine_test_lifosys/provider/main_provider.dart';
 import 'package:provider/provider.dart';
 
-Widget tokenWidget(BuildContext context){
-  return  Column(
-    crossAxisAlignment:
-    CrossAxisAlignment.start,
+Widget tokenWidget(BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Consumer<MainProvider>(
-        builder: (context,value,child) {
+        builder: (context, value, child) {
           return Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
                 'Token',
@@ -46,11 +43,11 @@ Widget tokenWidget(BuildContext context){
               ),
             ],
           );
-        }
+        },
       ),
       const SizedBox(height: 12),
       Consumer<MainProvider>(
-        builder: (context,value,child) {
+        builder: (context, value, child) {
           return SizedBox(
             height: 200,
             child: GridView.builder(
@@ -72,8 +69,8 @@ Widget tokenWidget(BuildContext context){
                   onTap: isBooked
                       ? null
                       : () {
-                    value.selectToken(token.id);
-                  },
+                          value.selectToken(token.id);
+                        },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
@@ -146,8 +143,8 @@ Widget tokenWidget(BuildContext context){
               },
             ),
           );
-        }
-      )
+        },
+      ),
     ],
   );
 }

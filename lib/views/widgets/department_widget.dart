@@ -24,13 +24,13 @@ class DepartmentRow extends StatelessWidget {
         Row(
           children: [
             Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFD1D5DB)),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child:Image.asset(icon)
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                border: Border.all(color: const Color(0xFFD1D5DB)),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Image.asset(icon),
             ),
             const SizedBox(width: 12),
             Column(

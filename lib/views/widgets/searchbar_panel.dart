@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../core/colors.dart';
-
 class SearchPanel extends StatefulWidget {
   const SearchPanel({super.key});
 
@@ -111,30 +109,51 @@ class _SearchPanelState extends State<SearchPanel> {
                 ),
                 const Divider(),
 
-                const Text("MOST POPULAR DOCTORS",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueGrey,
-                        fontSize: 12)),
+                const Text(
+                  "MOST POPULAR DOCTORS",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueGrey,
+                    fontSize: 12,
+                  ),
+                ),
                 const SizedBox(height: 10),
-                _doctorTile("Brooklyn Simmons", "Cardiology", "12/80 Bookings",
-                    ["08:00AM - 09:00AM", "04:00PM - 08:00PM"]),
-                _doctorTile("Cameron Williamson", "Cardiology", "12/80 Bookings",
-                    ["08:00AM - 09:00AM"]),
-                _doctorTile("Devon Lane", "Cardiology", "12/80 Bookings",
-                    ["09:00AM - 10:00AM"]),
+                _doctorTile(
+                  "Brooklyn Simmons",
+                  "Cardiology",
+                  "12/80 Bookings",
+                  ["08:00AM - 09:00AM", "04:00PM - 08:00PM"],
+                ),
+                _doctorTile(
+                  "Cameron Williamson",
+                  "Cardiology",
+                  "12/80 Bookings",
+                  ["08:00AM - 09:00AM"],
+                ),
+                _doctorTile("Devon Lane", "Cardiology", "12/80 Bookings", [
+                  "09:00AM - 10:00AM",
+                ]),
                 const Divider(),
 
-                const Text("DEPARTMENTS",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange,
-                        fontSize: 12)),
+                const Text(
+                  "DEPARTMENTS",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                    fontSize: 12,
+                  ),
+                ),
                 const SizedBox(height: 10),
-                _departmentTile("Cardiology", "Floor 2, Wing A",
-                    "24/38 Doctors Available"),
-                _departmentTile("Orthopedic", "Floor 2, Wing A",
-                    "24/38 Doctors Available"),
+                _departmentTile(
+                  "Cardiology",
+                  "Floor 2, Wing A",
+                  "24/38 Doctors Available",
+                ),
+                _departmentTile(
+                  "Orthopedic",
+                  "Floor 2, Wing A",
+                  "24/38 Doctors Available",
+                ),
               ],
             ),
           ),
@@ -143,7 +162,12 @@ class _SearchPanelState extends State<SearchPanel> {
     );
   }
 
-  Widget _doctorTile(String name, String dept, String bookings, List<String> times) {
+  Widget _doctorTile(
+    String name,
+    String dept,
+    String bookings,
+    List<String> times,
+  ) {
     return ListTile(
       leading: CircleAvatar(child: Text(name[0])),
       title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -154,7 +178,7 @@ class _SearchPanelState extends State<SearchPanel> {
           backgroundColor: Colors.blueAccent,
           padding: const EdgeInsets.symmetric(horizontal: 16),
         ),
-        child: Text("Book",style: TextStyle(),),
+        child: Text("Book", style: TextStyle()),
       ),
     );
   }

@@ -15,21 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => MainProvider()),
-      ],
+      providers: [ChangeNotifierProvider(create: (context) => MainProvider())],
       child: MaterialApp(
         title: 'OXZYGEN',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
         // home: HomeScreen(),
         home: DashboardScreen(),
       ),
-
     );
   }
 }
-

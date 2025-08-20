@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:machine_test_lifosys/provider/main_provider.dart';
-import 'package:machine_test_lifosys/views/widgets/searchbar_panel.dart';
 import 'package:provider/provider.dart';
 
 class SearchBarWidget extends StatefulWidget {
@@ -13,12 +12,11 @@ class SearchBarWidget extends StatefulWidget {
 class _SearchBarWidgetState extends State<SearchBarWidget> {
   bool isExpanded = false;
 
-
   @override
   Widget build(BuildContext context) {
-    return                 Center(
+    return Center(
       child: Consumer<MainProvider>(
-        builder: (context,value,child) {
+        builder: (context, value, child) {
           return Container(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Row(
@@ -37,7 +35,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                       ),
                     ],
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   child: Row(
                     children: [
                       Container(
@@ -62,7 +63,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                           },
                           onTap: value.selectSearch,
                           decoration: InputDecoration(
-                            hintText: 'Search for patients, doctors, departments, or dates',
+                            hintText:
+                                'Search for patients, doctors, departments, or dates',
                             hintStyle: const TextStyle(
                               fontSize: 12,
                               color: Color(0xFF9CA3AF),
@@ -81,34 +83,31 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   ),
                 ),
                 const SizedBox(width: 16),
-                      Visibility(
-                        visible: value.selectSearchBar,
-                        child: InkWell(
-                          onTap: value.clearSearch,
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: const Icon(
-                              Icons.close,
-                              size: 18,
-                              color: Color(0xFF4B5563),
-                            ),
-                          ),
-                        ),
+                Visibility(
+                  visible: value.selectSearchBar,
+                  child: InkWell(
+                    onTap: value.clearSearch,
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      width: 28,
+                      height: 28,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
                       ),
-                    ],
+                      child: const Icon(
+                        Icons.close,
+                        size: 18,
+                        color: Color(0xFF4B5563),
+                      ),
+                    ),
                   ),
+                ),
+              ],
+            ),
           );
-        }
+        },
       ),
-
-
     );
   }
 }
-
