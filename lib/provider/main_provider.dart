@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../viewmodels/doctor_model.dart';
+import '../viewmodels/event_model.dart';
 import '../viewmodels/patients_model.dart';
 import '../viewmodels/token_model.dart';
 
@@ -278,4 +279,101 @@ class MainProvider extends ChangeNotifier {
   String formatHeader(DateTime date) {
     return DateFormat.yMMMM().format(date);
   }
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  RangeSelectionMode _rangeSelectionMode = RangeSelectionMode.toggledOff;
+   DateTime _focusedEventDay = DateTime(2025, 11, 20);
+  DateTime? _selectedEventDay;
+  DateTime? _rangeStart;
+  DateTime? _rangeEnd;
+
+  List<Event> _selectedEvents = [];
+
+  CalendarFormat get calendarFormat => _calendarFormat;
+  RangeSelectionMode get rangeSelectionMode => _rangeSelectionMode;
+  DateTime get focusedEventDay => _focusedEventDay;
+  DateTime? get selectedEvetDay => _selectedEventDay;
+  DateTime? get rangeStart => _rangeStart;
+  DateTime? get rangeEnd => _rangeEnd;
+  List<Event> get selectedEvents => _selectedEvents;
+
+  CalendarProvider() {
+    _selectedEventDay = DateTime(2025, 11, 20);
+    _selectedEvents = _getEventsForDay(_selectedEventDay!);
+  }
+
+  List<Event> _getEventsForDay(DateTime day) {
+    return [];
+  }
+
+  List<Event> _getEventsForRange(DateTime start, DateTime end) {
+    final days = daysInRange(start, end);
+    return [for (final d in days) ..._getEventsForDay(d)];
+  }
+
+  void onDaySelected(DateTime selectedDay, DateTime focusedDay) {
+    if (!isSameDay(_selectedEventDay, selectedDay)) {
+      _selectedEventDay = selectedDay;
+      _focusedEventDay = focusedDay;
+      _rangeStart = null;
+      _rangeEnd = null;
+      _rangeSelectionMode = RangeSelectionMode.toggledOff;
+      _selectedEvents = _getEventsForDay(selectedDay);
+      notifyListeners();
+    }
+  }
+
+  void onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
+    _selectedEventDay = null;
+    _focusedEventDay = focusedDay;
+    _rangeStart = start;
+    _rangeEnd = end;
+    _rangeSelectionMode = RangeSelectionMode.toggledOn;
+
+    if (start != null && end != null) {
+      _selectedEvents = _getEventsForRange(start, end);
+    } else if (start != null) {
+      _selectedEvents = _getEventsForDay(start);
+    } else if (end != null) {
+      _selectedEvents = _getEventsForDay(end);
+    }
+    notifyListeners();
+  }
+
+  void onFormatChanged(CalendarFormat format) {
+    if (_calendarFormat != format) {
+      _calendarFormat = format;
+      notifyListeners();
+    }
+  }
+
+  void onPageChanged(DateTime focusedDay) {
+    _focusedEventDay = focusedDay;
+    notifyListeners();
+  }
+
+  void previousMonth() {
+    _focusedEventDay = DateTime(_focusedEventDay.year, _focusedEventDay.month - 1, 1);
+    notifyListeners();
+  }
+
+  void nextMonth() {
+    _focusedEventDay = DateTime(_focusedEventDay.year, _focusedEventDay.month + 1, 1);
+    notifyListeners();
+  }
+
+  String getMonthName(DateTime date) {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    return '${months[date.month - 1]} ${date.year}';
+  }
+  List<DateTime> daysInRange(DateTime first, DateTime last) {
+    final dayCount = last.difference(first).inDays + 1;
+    return List.generate(
+      dayCount,
+          (index) => DateTime.utc(first.year, first.month, first.day + index),
+    );
+  }
+
 }

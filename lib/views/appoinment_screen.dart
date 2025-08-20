@@ -484,7 +484,7 @@ Widget appointmentWidgetMain(BuildContext context) {
                                     ),
                                   ],
                                 )
-                              : CalenderWidget(),
+                              : CalendarWidget(),
                         ],
                       ),
               ],
